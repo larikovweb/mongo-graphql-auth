@@ -45,4 +45,20 @@ const REFRESH_MUTATION = gql`
   }
 `;
 
-export { LOGIN_MUTATION, REGISTRATION_MUTATION, LOGOUT_MUTATION, REFRESH_MUTATION };
+const ACTIVATE_MUTATION = gql`
+  mutation Activate($activationLink: String!) {
+    activate(activationLink: $activationLink) {
+      isActivated
+      id
+      email
+    }
+  }
+`;
+
+export {
+  ACTIVATE_MUTATION,
+  LOGIN_MUTATION,
+  REGISTRATION_MUTATION,
+  LOGOUT_MUTATION,
+  REFRESH_MUTATION,
+};

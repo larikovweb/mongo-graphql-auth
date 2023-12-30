@@ -71,7 +71,7 @@ const userResolvers: IResolvers = {
         throw new Error('Непредвиденная ошибка');
       }
     },
-    login: async (_: any, { email, password }: LoginArgs, { req, res, next }) => {
+    login: async (_: any, { email, password }: LoginArgs, { req, res }) => {
       try {
         const userData = await UserService.login(email, password);
         res.cookie('refreshToken', userData.refreshToken, {
@@ -89,7 +89,7 @@ const userResolvers: IResolvers = {
         throw new Error('Непредвиденная ошибка');
       }
     },
-    logout: async (_: any, __: any, { req, res, next }) => {
+    logout: async (_: any, __: any, { req, res }) => {
       try {
         const { refreshToken } = req.cookies;
         //TODO

@@ -1,10 +1,9 @@
 import { useQuery } from '@apollo/client';
 import { GET_USERS_QUERY } from '../graphql/queries/userQueries';
-import { IUser } from '../interfaces/data';
+import { FC } from 'react';
 
-export const UserList = () => {
+export const UserList: FC = () => {
   const { loading, error, data } = useQuery(GET_USERS_QUERY);
-  console.log(data);
 
   if (loading) {
     return <div>Loading...</div>;

@@ -1,7 +1,7 @@
 import UserModel from '../models/user-model';
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
-import mailService from '../service/mail-service';
+import MailService from '../service/mail-service';
 import tokenService from './token-service';
 import { UserDto } from '../dtos/user-dtos';
 import ApiError from '../exceptions/api-error';
@@ -25,9 +25,9 @@ class UserService {
     });
 
     //отправляем письмо
-    await mailService.sendActivationMail(
+    await MailService.sendActivationMail(
       email,
-      `${process.env.API_URL}/api/activate/${activationLink}`,
+      `${process.env.CLIENT_URL}/activate/${activationLink}`,
     );
 
     //создаем токены
